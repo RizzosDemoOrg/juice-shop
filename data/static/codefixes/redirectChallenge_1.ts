@@ -10,6 +10,9 @@ export const redirectAllowlist = new Set([
 ])
 
 export const isRedirectAllowed = (url: string) => {
+  if (typeof url !== 'string') {
+    return false
+  }
   let allowed = false
   for (const allowedUrl of redirectAllowlist) {
     allowed = allowed || url.includes(encodeURI(allowedUrl))
